@@ -57,6 +57,7 @@ public class Book {
         return id;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,6 +66,16 @@ public class Book {
         Book book = (Book) o;
 
         return Objects.equals(id, book.id);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", authors=" + authors +
+                ", id=" + id +
+                '}';
     }
 
     @Override
