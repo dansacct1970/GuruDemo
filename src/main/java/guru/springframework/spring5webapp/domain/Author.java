@@ -70,7 +70,8 @@ public class Author {
         return "Author{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", books=" + books +
+//                removed to avoid infinite look/circular reference with controller
+//                ", books=" + books +
                 ", id=" + id +
                 '}';
     }

@@ -79,7 +79,8 @@ public class Book {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
+//                removed to avoid infinite look/circular reference with controller
+//                ", authors=" + authors +
                 ", id=" + id +
                 '}';
     }
