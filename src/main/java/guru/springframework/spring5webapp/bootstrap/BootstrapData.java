@@ -41,24 +41,52 @@ public class BootstrapData implements CommandLineRunner {
         Book podIgoto = new Book("Pod igoto", "121212");
 
 
-        vazov.getBooks().add(podIgoto);
-        podIgoto.getAuthors().add(vazov);
+        addBookToAuthor(vazov, podIgoto);
+        addAuthorToBook(podIgoto, vazov);
 
-        authorRepository.save(vazov);
-        bookRepository.save(podIgoto);
+
+        setBookToPublisher(podIgoto, siena);
+        addBookToPublisher(siena, podIgoto);
+
+        saveFilesToRepository(vazov, podIgoto, siena);
 
         Author tolkien = new Author("J.F", "Tolkien");
         Book lordOfTheRings = new Book("Lord of the Rings", "121212");
 
-        tolkien.getBooks().add(lordOfTheRings);
-        lordOfTheRings.getAuthors().add(tolkien);
+        addBookToAuthor(tolkien, lordOfTheRings);
+        addAuthorToBook(lordOfTheRings, tolkien);
 
-        authorRepository.save(tolkien);
-        bookRepository.save(lordOfTheRings);
+
+        setBookToPublisher(lordOfTheRings, siena);
+        addBookToPublisher(siena, lordOfTheRings);
+
+        saveFilesToRepository(tolkien, lordOfTheRings, siena);
 
 
         System.out.println("Number of books " + bookRepository.count());
+        System.out.println("Publisher Number of Books " + publisherRepository.count());
 
+    }
 
+    private void saveFilesToRepository(Author author, Book book, Publisher publisher) {
+        authorRepository.save(author);
+        bookRepository.save(book);
+        publisherRepository.save(publisher);
+    }
+
+    private static void addBookToPublisher(Publisher publisher, Book book) {
+        publisher.getBooks().add(book);
+    }
+
+    private static void setBookToPublisher(Book book, Publisher publisher) {
+        book.setPublisher(publisher);
+    }
+
+    private static void addAuthorToBook(Book book, Author author) {
+        book.getAuthors().add(author);
+    }
+
+    private static void addBookToAuthor(Author author, Book book) {
+        author.getBooks().add(book);
     }
 }
