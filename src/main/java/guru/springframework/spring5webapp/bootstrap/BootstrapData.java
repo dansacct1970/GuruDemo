@@ -53,10 +53,6 @@ public class BootstrapData implements CommandLineRunner {
         Author tolkien = new Author("J.F", "Tolkien");
         Book lordOfTheRings = new Book("Lord of the Rings", "121212");
 
-        addBookToAuthor(tolkien, lordOfTheRings);
-        addAuthorToBook(lordOfTheRings, tolkien);
-
-
         setBookToPublisher(lordOfTheRings, siena);
         addBookToPublisher(siena, lordOfTheRings);
 
@@ -64,7 +60,7 @@ public class BootstrapData implements CommandLineRunner {
 
 
         System.out.println("Number of books " + bookRepository.count());
-        System.out.println("Publisher Number of Books " + publisherRepository.count());
+        System.out.println("Publisher Number of Books " + siena.getBooks().size());
 
     }
 
